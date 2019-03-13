@@ -1,6 +1,6 @@
 #include "filetree.hpp"
 
-#include "../api/fs/mbr.hpp"
+#include "mbr.hpp"
 #include "fat_internal.hpp"
 #include <cassert>
 #include <cstring>
@@ -22,7 +22,7 @@ long FileSys::write(FILE* file)
   assert(file);
 
   char mbr_code[SECT_SIZE];
-  auto* mbr = (fs::MBR::mbr*) mbr_code;
+  auto* mbr = (MBR::mbr*) mbr_code;
 
   // create "valid" MBR
   memcpy(mbr->oem_name, "INCLUDOS", 8);
@@ -43,7 +43,7 @@ long FileSys::write(FILE* file)
   strcpy(BPB->volume_label, "IncludeOS");
   strcpy(BPB->system_id,    "FAT32");
 
-  for (decltype(sizeof(fs::MBR::partition)) i = 0, e = 4*sizeof(fs::MBR::partition); i < e; ++i) {
+  for (decltype(sizeof(MBR::partition)) i = 0, e = 4*sizeof(MBR::partition); i < e; ++i) {
     ((char*) mbr->part)[i] = 0;
   }
 

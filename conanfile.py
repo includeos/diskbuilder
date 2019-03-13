@@ -21,9 +21,9 @@ def get_version():
         return '0.0.0'
 
 
-class VmrunnerConan(ConanFile):
+class DiskbuilderConan(ConanFile):
     settings="os_build","arch_build"
-    name = "diskimagebuild"
+    name = "diskbuilder"
     version = get_version()
     license = "Apache-2.0"
     description = "A tool to create an IncludeOS binary filesystem image"
@@ -40,9 +40,9 @@ class VmrunnerConan(ConanFile):
 
     def _cmake_configure(self):
         cmake=CMake(self)
-        cmake.configure(source_folder=self.source_folder+"/diskimagebuild")
+        cmake.configure(source_folder=self.source_folder)
         return cmake
-        
+
     def build(self):
         cmake=self._cmake_configure()
         cmake.build()
