@@ -17,6 +17,7 @@ script:
     fi
     if [ -n "$TRAVIS_TAG" ]; then
       conan copy --all diskbuilder/$VERSION@includeos/latest includeos/stable
+      conan upload --all diskbuilder/$VERSION@includeos/latest -r includeos
       conan upload --all diskbuilder/$VERSION@includeos/stable -r includeos
     fi
 
