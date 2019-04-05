@@ -40,6 +40,7 @@ pipeline {
           when { buildingTag() }
           steps {
             sh script: "conan copy --all $PACKAGE/$VERSION@$USER/$CHAN_LATEST $USER/$CHAN_STABLE", label: "Copy to stable channel"
+            upload_package("$CHAN_LATEST")
             upload_package("$CHAN_STABLE")
           }
         }
