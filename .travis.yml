@@ -1,4 +1,5 @@
 os: osx
+osx_image: xcode10.2
 language: cpp
 
 addons:
@@ -9,7 +10,7 @@ addons:
     - conan
 
 compiler:
-    - clang
+  - clang
 
 before_cache:
   - brew cleanup
