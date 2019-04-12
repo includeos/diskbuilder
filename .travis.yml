@@ -1,6 +1,13 @@
 os: osx
 language: cpp
 
+addons:
+  homebrew:
+    packages:
+    - cmake
+    - python3
+    - conan
+
 compiler:
     - clang
 
@@ -10,12 +17,11 @@ before_cache:
 cache:
   - directories:
     - $HOME/Library/Caches/Homebrew
-    
+
 install:
-  - .ci/install.sh
+  - conan config install https://github.com/includeos/conan_config.git
 
 script:
-  - conan config install https://github.com/includeos/conan_config.git
   - conan create . includeos/latest -pr apple-clang-10-macos-toolchain
   - VERSION=$(conan inspect -a version . | cut -d " " -f 2)
   - |
