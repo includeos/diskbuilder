@@ -4,6 +4,13 @@ language: cpp
 compiler:
     - clang
 
+before_cache:
+  - brew cleanup
+
+cache:
+  - directories:
+    - $HOME/Library/Caches/Homebrew
+    
 install:
   - .ci/install.sh
 
