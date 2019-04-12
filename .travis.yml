@@ -21,6 +21,7 @@ cache:
 
 install:
   - conan config install https://github.com/includeos/conan_config.git
+  - conan --version
 
 script:
   - conan create . includeos/latest -pr apple-clang-10-macos-toolchain
