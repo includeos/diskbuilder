@@ -1,10 +1,10 @@
 {
-    pkgs ? import <nixpkgs> {},
-    diskbuilder ? import ./default.nix {pkgs=pkgs;},
+  pkgs ? import <nixpkgs>{},
+  diskbuilder ? import ./default.nix { inherit pkgs; },
 }
 :
 pkgs.mkShell {
-    packages = [
-        diskbuilder
-    ];
+  packages = [
+    diskbuilder
+  ];
 }
