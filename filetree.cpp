@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <cstring>
 #include <libgen.h>
+#include <stdexcept>
 #include <sys/stat.h>
 #include <dirent.h>
 
