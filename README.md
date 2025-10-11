@@ -1,36 +1,20 @@
 # diskbuilder
-Building disks
 
-### Configure Settings
+`diskbuilder` is an IncludeOS utility for creating raw FAT32 disk images.
+It is used in tests to generate FAT32 images for block devices and memdisk.
 
-```
-  conan config install https://github.com/includeos/conan_config.git
-```
+## Usage
+For testing `diskbuilder`, type `nix-shell` in the repository (requires Nix).
+The shell uses the Nix derivation in the repository root.
 
-##### View remote and profiles installed
-
-* Remotes:
-```
-  conan remote list
-```
-You should have these:
-
-```
-  includeos: https://api.bintray.com/conan/includeos/includeos [Verify SSL: True]
-  includeos-test: https://api.bintray.com/conan/includeos/test-packages [Verify SSL: True]
-```
-
-* Profiles:
-
-```
-  conan profile list
-```
-
-
-### Build and run diskbuilder
+`diskbuilder` builds a FAT32 image from a specified directory, which serves as the root.
 
 ```bash
-  mkdir build
-  cd build
-  conan create .. includeos/stable -pr <profile-name>
+diskbuilder -o <output-image> <root-dir>
+```
+
+For verbose output, add the -v option before -o:
+
+```bash
+diskbuilder -v -o <output-image> <root-dir>
 ```
